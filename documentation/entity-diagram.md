@@ -1,3 +1,3 @@
 # Entity Relationship Diagram (ERD)
 
-!(../entity-diagram.drawio.png)[diagram]
+![diagram](../entity-diagram.drawio.png)
