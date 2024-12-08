@@ -1,6 +1,6 @@
 # Game Store Project
 
-![project icon](documentation/gamepad.png)
+![project icon](resource/gamepad.png)
 
 Game Store is a platform where the user be able to browse and search for games. 
 Wishlist is a feature that allows the user to save games he likes. 
@@ -14,5 +14,5 @@ It will be able to interact with the community by creating comments and requesti
 - This system will have a notification system using Websocket.
 
 Documentation:
-- [Business Requirements](documentation/business-requirements.md)
-- [System Design & Architecture](documentation/system-design-architecture.md)
+- [Business Requirements](resource/business-requirements.md)
+- [System Design & Architecture](resource/system-design-architecture.md)
