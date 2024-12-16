@@ -17,15 +17,11 @@ import java.util.List;
 @Table(name = "whishlist")
 public class Wishlist extends BaseEntity {
 
-    @ManyToMany
-    @JoinTable(
-            name = "wishlist_game",
-            joinColumns = @JoinColumn(name = "wihslist_id"),
-            inverseJoinColumns = @JoinColumn(name = "game_id")
-    )
+    @ManyToMany(mappedBy = "wishlists")
     private List<Game> games;
 
-    @OneToOne(mappedBy = "wishlist")
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
 }

@@ -1,6 +1,5 @@
 package com.ffreitas.gamestoreserver.user.entities;
 
-import com.ffreitas.gamestoreserver.comment.entities.Comment;
 import com.ffreitas.gamestoreserver.common.BaseEntity;
 import com.ffreitas.gamestoreserver.notification.entities.Notification;
 import com.ffreitas.gamestoreserver.request.entities.GameRequest;
@@ -29,23 +28,18 @@ public class User extends BaseEntity {
     private String email;
 
     @Column(name = "role", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Role role;
+    private String role;
 
     @Column(name = "profile_picture")
     private String profilePicture;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Comment> comments;
-
-    @OneToOne
-    @JoinColumn(name = "wishlist_id")
+    @OneToOne(mappedBy = "user")
     private Wishlist wishlist;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Notification> notifications;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<GameRequest> requests;
 
 }

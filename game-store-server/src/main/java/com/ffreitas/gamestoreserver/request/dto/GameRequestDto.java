@@ -22,7 +22,7 @@ public record GameRequestDto(
         Integer id,
 
         @NotNull(message = "Game request title cannot be null")
-        @Size(max = 255, message = "Game request title must have a maximum of 255 characters")
+        @Size(max = 100, message = "Game request title must have a maximum of 255 characters")
         @NotEmpty(message = "Game request title cannot be empty")
         String title,
 

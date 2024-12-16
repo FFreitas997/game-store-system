@@ -2,7 +2,6 @@ package com.ffreitas.gamestoreserver.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.ffreitas.gamestoreserver.user.entities.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -38,7 +37,7 @@ public record UserDto(
         String email,
 
         @NotNull(message = "Role cannot be null")
-        Role role,
+        String role,
 
         String profilePicture
 
