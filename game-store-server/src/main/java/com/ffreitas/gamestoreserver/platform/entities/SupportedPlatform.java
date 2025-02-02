@@ -1,4 +1,4 @@
-package com.ffreitas.gamestoreserver.category.entities;
+package com.ffreitas.gamestoreserver.platform.entities;
 
 import com.ffreitas.gamestoreserver.common.BaseEntity;
 import com.ffreitas.gamestoreserver.game.entities.Game;
@@ -20,8 +20,8 @@ import java.util.List;
 @Setter
 @SuperBuilder
 @Entity
-@Table(name = "category")
-public class Category extends BaseEntity {
+@Table(name = "supported_platform")
+public class SupportedPlatform extends BaseEntity {
 
     @Column(name = "name", nullable = false, length = 100)
     private String name;
@@ -29,21 +29,12 @@ public class Category extends BaseEntity {
     @Column(name = "description", length = 500)
     private String description;
 
-    @ManyToMany(mappedBy = "categories")
+    @Column(name = "website")
+    private String website;
+
+    @Column(name = "logo")
+    private String logo;
+
+    @ManyToMany(mappedBy = "supportedPlatforms")
     private List<Game> games;
 }
-
-/*
-@NamedQuery(
-        name = "Category.findByName",
-        query = """
-                SELECT c
-                FROM Category c
-                WHERE lower(c.name) like lower(:catName)
-                ORDER BY c.name ASC
-                """
-)
-//@NamedQueries()
-//@NamedNativeQuery()
-
- */

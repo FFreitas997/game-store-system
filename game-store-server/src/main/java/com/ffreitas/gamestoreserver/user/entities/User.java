@@ -5,7 +5,11 @@ import com.ffreitas.gamestoreserver.notification.entities.Notification;
 import com.ffreitas.gamestoreserver.request.entities.GameRequest;
 import com.ffreitas.gamestoreserver.wishlist.entities.Wishlist;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -13,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "_user")
 public class User extends BaseEntity {

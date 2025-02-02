@@ -3,13 +3,17 @@ package com.ffreitas.gamestoreserver.comment.entities;
 import com.ffreitas.gamestoreserver.common.BaseEntity;
 import com.ffreitas.gamestoreserver.game.entities.Game;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "comment")
 public class Comment extends BaseEntity {

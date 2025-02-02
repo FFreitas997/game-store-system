@@ -4,7 +4,11 @@ import com.ffreitas.gamestoreserver.common.BaseEntity;
 import com.ffreitas.gamestoreserver.game.entities.Game;
 import com.ffreitas.gamestoreserver.user.entities.User;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.List;
 
@@ -12,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Builder
+@SuperBuilder
 @Entity
 @Table(name = "whishlist")
 public class Wishlist extends BaseEntity {

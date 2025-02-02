@@ -13,5 +13,4 @@ public class GameStoreServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(GameStoreServerApplication.class, args);
     }
-
 }
