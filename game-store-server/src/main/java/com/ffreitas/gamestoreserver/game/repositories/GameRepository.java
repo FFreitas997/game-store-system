@@ -1,16 +1,24 @@
 package com.ffreitas.gamestoreserver.game.repositories;
 
+import com.ffreitas.gamestoreserver.category.entities.Category;
 import com.ffreitas.gamestoreserver.game.entities.Game;
+import com.ffreitas.gamestoreserver.platform.entities.SupportedPlatform;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface GameRepository extends JpaRepository<Game, String>, JpaSpecificationExecutor<Game> {
 
-    Page<Game> findAllByCategoryId(String categoryID, Pageable pageable);
+    Page<Game> findAllByCategories(List<Category> categories, Pageable pageable);
+
+    Page<Game> findAllBySupportedPlatforms(List<SupportedPlatform> supportedPlatforms, Pageable pageable);
+
+    boolean existsGamesByTitle(String title);
 
 }
 

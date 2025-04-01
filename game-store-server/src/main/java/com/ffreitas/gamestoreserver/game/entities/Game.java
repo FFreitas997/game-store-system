@@ -32,19 +32,19 @@ public class Game extends BaseEntity {
     @Column(name = "game_cover")
     private String cover;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @OrderBy("name ASC")
     private List<Category> categories;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @OrderBy("name ASC")
     private List<SupportedPlatform> supportedPlatforms;
 
-    @OneToMany(mappedBy = "game", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "game", fetch = FetchType.LAZY, orphanRemoval = true)
     @OrderBy("createdAt DESC")
     private List<Comment> comments;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "game_wishlist",
             joinColumns = @JoinColumn(name = "game_id"),
@@ -62,5 +62,29 @@ public class Game extends BaseEntity {
         if (wishlist == null) return;
         this.wishlists.remove(wishlist);
         wishlist.getGames().remove(this);
+    }
+
+    public void addPlatform(SupportedPlatform platform) {
+        if (platform == null) return;
+        this.supportedPlatforms.add(platform);
+        platform.getGames().add(this);
+    }
+
+    public void removePlatform(SupportedPlatform platform) {
+        if (platform == null) return;
+        this.supportedPlatforms.remove(platform);
+        platform.getGames().remove(this);
+    }
+
+    public void addCategory(Category category) {
+        if (category == null) return;
+        this.categories.add(category);
+        category.getGames().add(this);
+    }
+
+    public void removeCategory(Category category) {
+        if (category == null) return;
+        this.categories.remove(category);
+        category.getGames().remove(this);
     }
 }

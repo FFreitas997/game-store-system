@@ -9,6 +9,7 @@ import com.ffreitas.gamestoreserver.game.entities.Game;
 import com.ffreitas.gamestoreserver.platform.dto.ResponseSupportedPlatformDto;
 import com.ffreitas.gamestoreserver.platform.mapper.SupportedPlatformMapper;
 
+import java.util.Collections;
 import java.util.List;
 
 public class GameMapper {
@@ -26,11 +27,6 @@ public class GameMapper {
                 .map(CategoryMapper::toResponse)
                 .toList();
 
-        List<ResponseCommentDto> comments = entity
-                .getComments()
-                .stream()
-                .map(CommentMapper::toResponse)
-                .toList();
 
         List<ResponseSupportedPlatformDto> supportedPlatforms = entity
                 .getSupportedPlatforms()
@@ -43,9 +39,9 @@ public class GameMapper {
                 .title(entity.getTitle())
                 .description(entity.getDescription())
                 .supportedPlatform(supportedPlatforms)
-                .cover(null)
+                .cover(entity.getCover())
                 .categories(categories)
-                .comments(comments)
+                .comments(Collections.emptyList())
                 .build();
     }
 }

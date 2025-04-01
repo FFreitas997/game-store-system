@@ -24,9 +24,11 @@ public interface GameService {
 
     ResponsePageDto<ResponseGameDto> retrieveAllGamesByCategory(String categoryID, int page, int size);
 
-    void updateGame(String gameID, ResponseGameDto gameDto);
+    ResponsePageDto<ResponseGameDto> retrieveAllGamesByPlatform(String platformID, int page, int size);
+
+    void updateGame(String gameID,  RequestGameDto request);
 
     void uploadCover(String gameID, MultipartFile file);
 
-    void deleteGame(String gameID);
+    void deleteGame(String gameID, boolean confirm);
 }
